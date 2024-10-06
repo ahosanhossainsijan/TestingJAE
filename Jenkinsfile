@@ -1,46 +1,33 @@
-﻿pipeline {
-
+pipeline {
     agent any
 
     tools {
-
-        dotnetsdk 'dotnet'
-
+        dotnet 'dotnet'
     }
 
     stages {
-
         stage('Restore') {
-
             steps {
-
-                sh 'dotnet restore'
-
+                script {
+                    sh 'dotnet restore'
+                }
             }
-
         }
 
         stage('Build') {
-
             steps {
-
-                sh 'dotnet build --no-restore'
-
+                script {
+                    sh 'dotnet build --no-restore'
+                }
             }
-
         }
 
         stage('Test') {
-
             steps {
-
-                sh 'dotnet test --no-build'
-
+                script {
+                    sh 'dotnet test --no-build'
+                }
             }
-
         }
-
     }
-
 }
- 
