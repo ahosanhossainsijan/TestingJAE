@@ -14,25 +14,25 @@
         
         stage('Restore Dependencies') {
             steps {
-                sh 'dotnet restore'
+                bat 'dotnet restore'
             }
         }
         
         stage('Build') {
             steps {
-                sh 'dotnet build --configuration Release'
+                bat 'dotnet build --configuration Release'
             }
         }
         
         stage('Run Tests') {
             steps {
-                sh 'dotnet test'
+                bat 'dotnet test'
             }
         }
         
         stage('Publish') {
             steps {
-                sh 'dotnet publish --configuration Release --output ./publish'
+                bat 'dotnet publish --configuration Release --output ./publish'
             }
         }
     }
