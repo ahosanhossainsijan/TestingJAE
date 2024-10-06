@@ -8,7 +8,6 @@ namespace TestingJAE.Tests
     [AllureNUnit]
     public class EuroNewsTest : BaseTest
     {
-
         [Test]
         public void EuroNewsPagesTest()
         {
