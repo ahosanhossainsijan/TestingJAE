@@ -1,51 +1,46 @@
 ﻿pipeline {
+
     agent any
-    
+
     tools {
+
         dotnetsdk 'dotnet'
+
     }
-    
+
     stages {
-        stage('Checkout') {
+
+        stage('Restore') {
+
             steps {
-                checkout scm
+
+                sh 'dotnet restore'
+
             }
+
         }
-        
-        stage('Restore Dependencies') {
-            steps {
-                bat 'dotnet restore'
-            }
-        }
-        
+
         stage('Build') {
+
             steps {
-                bat 'dotnet build --configuration Release'
+
+                sh 'dotnet build --no-restore'
+
             }
+
         }
-        
-        stage('Run Tests') {
+
+        stage('Test') {
+
             steps {
-                bat 'dotnet test'
+
+                sh 'dotnet test --no-build'
+
             }
+
         }
-        
-        stage('Publish') {
-            steps {
-                bat 'dotnet publish --configuration Release --output ./publish'
-            }
-        }
+
     }
-    
-    post {
-        always {
-            cleanWs()
-        }
-        success {
-            echo 'Build successful!'
-        }
-        failure {
-            echo 'Build failed!'
-        }
-    }
+
 }
+ 
