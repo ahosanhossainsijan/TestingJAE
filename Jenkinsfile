@@ -9,7 +9,7 @@ pipeline {
         stage('Restore') {
             steps {
                 script {
-                    sh 'dotnet restore'
+                    bat 'dotnet restore'
                 }
             }
         }
@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'dotnet build --no-restore'
+                    bat 'dotnet build --no-restore'
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'dotnet test --no-build'
+                    bat 'dotnet test --no-build'
                 }
             }
         }
