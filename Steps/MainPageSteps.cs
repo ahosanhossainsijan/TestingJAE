@@ -21,5 +21,6 @@ namespace TestingJAE.Steps
         {
             mainPage.GoToNewsletttersPage();
         }
+        //add
     }
 }
